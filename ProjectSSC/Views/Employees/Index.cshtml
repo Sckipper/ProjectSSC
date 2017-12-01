@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Angajati";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $('#datatable').dataTable( {
+            "columnDefs": [ {
+                "targets": 'no-sort',
+                "orderable": false,
+            } ]
+        } );
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
+@Scripts.Render("~/bundles/Logged")
+
+<div class="container pagination-centered">
+    <div class="col-md-12">
+        <div class="dataTables_wrapper form-inline dt-bootstrap containerWrapper">
+            <div class="table-responsive">
+                <table id="datatable" class="table dataTable">
+                    <thead>
+                        <tr>
+                            <th id="id"></th>
+                            <th>Magazin</th>
+                            <th>Nume</th>
+                            <th>Prenume</th>
+                            <th>CNP</th>
+                            <th>Email</th>
+                            <th>Parola</th>
+                            <th>Data angajare</th>
+                            <th>Salariu</th>
+                            <th>Functie</th>
+                            <th class="col-xs-1 no-sort">
+                                <button id="add" onclick="location.href='@Url.Action("Create", "Employees")'" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                        @foreach (var item in Model)
+                        {
+                            <tr class="addedrow">
+                                <td id="id">@item.ID</td>
+                                <td>@item.MarketName</td>
+                                <td id="nume">@item.Nume</td>
+                                <td>@item.Prenume</td>
+                                <td>@item.CNP</td>
+                                <td>@item.Email</td>
+                                <td>@item.Parola</td>
+                                <td>@(item.DataAngajare != null ? item.DataAngajare.ToShortDateString() : "")</td>
+                                <td>@item.Salariu</td>
+                                <td>@item.Functie</td>
+                                <td>
+                                    <button class="edit" onclick="location.href='@Url.Action("Edit", "Employees", new { id = item.ID})'"></button>
+                                    <button class="delete"></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

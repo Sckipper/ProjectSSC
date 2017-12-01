@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div id="HeaderBar">
+        <div id="userPanel">
+            @if (@Session["nume"] != null)
+            {
+                @Session["nume"].ToString();
+            }
+
+            @*@if (SessionAccessor.LoggedUser != null)
+            {
+                @(SessionAccessor.LoggedUser.Nume) }*@
+            <span class="userBar">//</span>
+            @if (SessionAccessor.LoggedUser != null)
+            {
+                @(SessionAccessor.LoggedUser.Functie) }
+            <span class="userBar">//</span>
+            @if (SessionAccessor.LoggedUser != null)
+            {
+                @Html.DropDownList("markets", new SelectList(SessionAccessor.LoggedUser.Magazine));
+            }
+            <img id="logoutButton" onclick="location.href='@Url.Action("Logout", "Home")'" />
+        </div>
+        
+        <img id="logoMenu" />    
+        <div id="menu">
+            <div id="menuContent">
+                @if (@Session["role"] != null)
+                {
+                    <a onclick="location.href='@Url.Action("Home", "Home")'">Acasă</a>
+                    if ((int)@Session["role"] == 0)
+                    {
+                        <a onclick="location.href='@Url.Action("Index", "Deliveries")'">Livrări</a>
+                    }
+                    if ((int)@Session["role"] >= 1)
+                    {
+                        <a onclick="location.href='@Url.Action("Index", "Categories")'">Categorii</a>
+                        <a onclick="location.href='@Url.Action("Index", "Products")'">Produse</a>
+                    }
+                    if ((int)@Session["role"] >= 2)
+                    {
+                        <a onclick="location.href='@Url.Action("Index", "Deliveries")'">Livrări</a>
+                        <a onclick="location.href='@Url.Action("Index", "Employees")'">Angajaţi</a>
+
+                    }
+                    if ((int)@Session["role"] >= 3)
+                    {
+                        <a onclick="location.href='@Url.Action("Index", "Suppliers")'">Furnizori</a>
+                        <a onclick="location.href='@Url.Action("Index", "Markets")'">Magazine</a>
+                    }
+                }
+            </div>
+        </div> 
+    </div>
+    @RenderBody()  
+
+    <div id="deleteDialog">
+        <div id="innerDialog" class="col-md-4 col-md-offset-4 containerWrapper">
+            <h4 id="deleteMesage" ></h4>
+            <button id="deleteDialogFalse" class="col-xs-2 col-xs-offset-2 btn btn-primary">Nu</button>
+            <button id="deleteDialogTrue" class="col-xs-2 col-xs-offset-4 btn btn-primary">Da</button>
+        </div>
+    </div>
+
+</body>
+</html>
+
+@Scripts.Render("~/bundles/Layout")

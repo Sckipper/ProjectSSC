@@ -1,0 +1,16 @@
+
+- 404
+- validare id update
+- filtru expirate
+- furnizor pret bubuie
+- validari inputuri (cnp, salariu)
+- delete angajati pe roluri, parola sef
+- https
+- edit magazin
+- only jpg upload
+
+".ASPXAUTH=ED845E1563FC50848AB9143F61D4B72E83AA3486C80CD56409EE3C78DB5700164F0FB7E39B5BB3E6603F7396E9B15D32D9FA516E6BE2797B3B770FFDCDF3C2CE471D624338585AA1C523602DFF4AF7517E872AC42F6668CC34EBE0F27BBC2CE8"
+"ASP.NET_SessionId=jovyxi31xu2umjiylo2qjiex"
+"__RequestVerificationToken_L0xpY2VudGE1=1igfnmR98Vp3FeoJ7HYAi9PcDPEjptMbm2yNqbgDz7XhcJFxF9KPDQfGg5g7dlwXxReh_LSbYr6yxlbZTdTR7L4V934zU1MXd1yG_6p1HU01"
+"__cfduid=d5c3e2f4ac45a59ee4f6d19c6119127d21502016458"
+

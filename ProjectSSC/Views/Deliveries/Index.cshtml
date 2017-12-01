@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Livrari";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#datatable').dataTable({
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }]
+        });
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
+@Scripts.Render("~/bundles/Logged")
+
+<div class="container pagination-centered">
+    <div class="col-md-12">
+        <div class="dataTables_wrapper form-inline dt-bootstrap containerWrapper">
+            <div class="table-responsive">
+                <table id="datatable" class="table dataTable">
+                    <thead>
+                        <tr>
+                            <th id="id"></th>
+                            <th>Furnizor</th>
+                            <th>Magazin</th>
+                            <th>Data solicitare</th>
+                            <th>Data livrare</th>
+                            <th>Status</th>
+                            <th>Descriere</th>
+                            <th>Pret</th>
+                            <th class="col-xs-1 no-sort">
+                                <button id="add" onclick="location.href='@Url.Action("Create", "Deliveries")'" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                        @foreach (var item in Model)
+                        {
+                            <tr class="addedrow">
+                                <td id="id">@item.ID</td>
+                                <td>@item.SupplierName</td>
+                                <td>@item.MarketName</td>
+                                <td>@(item.DataSolicitare != null ? item.DataSolicitare.ToShortDateString() : "")</td>
+                                <td>@item.DataLivrare</td>
+                                <td class="status">@item.Status</td>
+                                <td>@item.Descriere</td>
+                                <td>@item.Pret</td>
+                                <td>
+                                    <button class="edit" onclick="location.href='@Url.Action("Edit", "Deliveries", new { id = item.ID})'"></button>
+                                    @if (Session["role"] != null && !Session["role"].ToString().Equals("0"))
+                                    {
+                                        <button class="delete"></button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="role">@Session["role"]</div>
+
+<script>
+    $('.status').each(function () {
+        switch ($(this).text()) {
+            case "Initiata":
+                $(this).css('color', 'orange');
+                break;
+            case "Procesare":
+                $(this).css('color', 'green');
+                break;
+            case "Livrata":
+                $(this).css('color', 'blue');
+                break;
+            case "Refuzata":
+                $(this).css('color', 'red');
+                break;
+        }
+    });
+</script>
+

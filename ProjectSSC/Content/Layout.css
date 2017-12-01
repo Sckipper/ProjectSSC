@@ -1,0 +1,264 @@
+﻿body {
+    background: #c7cedd;
+    background-color: #D7DDEA !important;
+    margin:0;
+}
+
+#HeaderBar{
+    height:80px;
+    background: linear-gradient(50deg, #0185d1, #575DA9);
+    box-shadow: 0 5px 6px #888888;
+}
+
+.containerWrapper{
+   background-color: #eff1f4;
+   border: 1px #ccc;
+   margin-top: 30px;
+   padding: 5px 15px;
+}
+
+#userPanel{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    border-radius: 0 0 0 15px;
+    color: white;
+    padding: 8px 18px;
+    display: none;
+}
+
+#logoutButton{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    float: right;
+    margin-left:10px;
+    content: url(Images/LogOut.png);
+}
+
+#markets{
+    margin-top: 3px;
+    border: none;
+    background-color: black;
+    color: white;
+    outline: none;
+}
+
+#logoMenu{
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+    display: none;
+    content: url(Images/Logo1.png);
+}
+
+#menu{
+    top: 80px;
+    background: rgba(0, 0, 0, 0.9);
+    max-height: 75%;
+    border-radius: 5px;
+    color: #eff1f7;
+    display: none;
+    left: 17px;
+    overflow: hidden;
+    padding: 20px;
+    position: absolute;
+    width: auto;
+    z-index: 7777;
+}
+
+#menuContent{
+    display:grid;
+}
+
+#menuContent a{
+    cursor:pointer;
+    margin:2px;
+
+}
+
+#menuContent a:hover {
+    color: white;
+}
+
+#insert {
+    display: none;
+    background: #EEEEEE !important;
+}
+
+    #insert th {
+        margin: 0;
+        padding: 5px;
+    }
+
+#save {
+    background: url('Images/check.png');
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    border: none;
+}
+
+    #save:hover {
+        background: url('Images/hovercheck.png');
+        background-size: contain;
+    }
+
+#add {
+    background: url('Images/add.png');
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    border: none;
+    float: right;
+    outline: none;
+}
+
+.edit {
+    background: url('Images/edit.png');
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    border: none;
+    margin-left: 10px;
+    float: right;
+    display: none;
+    outline: none;
+}
+
+.delete {
+    background: url('Images/delete.png');
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    border: none;
+    float: right;
+    display: none;
+    outline: none;
+}
+
+tbody tr:hover, .selected {
+    background-color: #cecece;
+}
+
+#questionButtons {
+    display: flex;
+}
+
+.navbar .navbar-default {
+    background-color: none;
+}
+
+.navbar-nav > li {
+    border-bottom: 3px solid #efefef;
+}
+
+#menuContent a {
+    color: #eff1f7;
+    text-decoration: none;
+}
+
+    #menuContent a:hover {
+        color: white;
+    }
+
+input {
+    padding: 0;
+}
+
+textarea {
+    width: 370px;
+    height: 100px;
+    padding: 6px 12px;
+}
+
+#id {
+    display: none;
+}
+
+#deleteDialog {
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: none;
+}
+
+#innerDialog {
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 12;
+    top: 40%;
+    position: absolute;
+}
+
+.dataTables_wrapper{
+    margin-bottom: 20px;
+}
+
+.containerWrapper {
+    margin-bottom: 20px;
+}
+
+.userBar {
+    color: #989898;
+}
+
+.endButtons{
+    width: 51px;
+}
+
+.img {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+    .image img {
+        -webkit-transition: all 0.8s ease; /* Safari and Chrome */
+        -moz-transition: all 0.8s ease; /* Firefox */
+        -ms-transition: all 0.8s ease; /* IE 9 */
+        -o-transition: all 0.8s ease; /* Opera */
+        transition: all 0.8s ease;
+    }
+
+.image:hover img {
+    -webkit-transform: scale(10); /* Safari and Chrome */
+    -moz-transform: scale(10); /* Firefox */
+    -ms-transform: scale(10); /* IE 9 */
+    -o-transform: scale(10); /* Opera */
+    transform: scale(10);
+}
+
+.container{
+    padding: 0;
+}
+
+textarea{
+    width: 100%;
+}
+
+#deleteMesage{
+    text-align: center;
+}
+
+#canvas, #canvas2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    margin: auto;
+}
+
+#datatable .image img {
+    z-index: 100;
+    position: sticky;
+}
+

@@ -1,0 +1,30 @@
+﻿@model ProjectSSC.Models.HomeModel
+@{
+    ViewBag.Title = "Home";
+}
+<div id="dashboardDiv">
+    <div id="panel1" class="dashboardPanel transitions">
+        <h2 class="dashboardTitle"></h2>
+        <div class="dashboardBody">
+            <span>@Model.dashboardMessage1</span>
+            <div id="chart1" class="chart" data="@Model.chart" data-cities="@Model.cities")></div>
+        </div>
+    </div>
+
+    <div id="panel2" class="dashboardPanel transitions">
+        <h2 class="dashboardTitle"></h2>
+        <div class="dashboardBody">
+            <span>@Model.dashboardMessage2</span>
+            <div id="chart2" class="chart" data="@Model.chart2" data-cities="@Model.cities2"></div>
+        </div>
+    </div>
+</div>
+
+<div id="role" >@Session["role"]</div>
+
+
+
+
+@Styles.Render("~/Content/Home")
+@Scripts.Render("~/bundles/Logged")
+<script src='@Scripts.Url("~/bundles/Home")'> </script>
