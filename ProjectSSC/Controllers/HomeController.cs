@@ -165,16 +165,18 @@ namespace ProjectSSC.Controllers
                 case 3:  // sef
                     var suppliers = SupplierContainer.getNrOfSuppliers();
                     var cities = SupplierContainer.getTopSuppliersCities(5);
-                    model.chart = "";
-                    model.cities = "";
-                    foreach (var city in cities)
+                    if (cities.Count != 0)
                     {
-                        model.cities += city + ',';
-                        model.chart  += SupplierContainer.getNrOfSupplierByCity(city).ToString() + ",";  
+                        model.chart = "";
+                        model.cities = "";
+                        foreach (var city in cities)
+                        {
+                            model.cities += city + ',';
+                            model.chart += SupplierContainer.getNrOfSupplierByCity(city).ToString() + ",";
+                        }
+                        model.cities = model.cities.Substring(0, model.cities.Length - 1);
+                        model.chart = model.chart.Substring(0, model.chart.Length - 1);
                     }
-                    model.cities = model.cities.Substring(0, model.cities.Length - 1);
-                    model.chart  = model.chart.Substring(0, model.chart.Length - 1);
-
                     model.dashboardMessage1 = "Aveti " + suppliers + (suppliers > 1 ? " furnizori" : " furnizor");
 
                     var markets = MarketContainer.getNrOfMarkets();
