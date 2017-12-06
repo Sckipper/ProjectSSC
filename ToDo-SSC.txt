@@ -2,12 +2,12 @@
 - 404
 - validare id update
 - filtru expirate
-- furnizor pret bubuie
-- validari inputuri (cnp, salariu)
+- validari inputuri (cnp, salariu, pret)
 - delete angajati pe roluri, parola sef
 - https
 - edit magazin
 - only jpg upload
+- poze pe edit
 
 ".ASPXAUTH=ED845E1563FC50848AB9143F61D4B72E83AA3486C80CD56409EE3C78DB5700164F0FB7E39B5BB3E6603F7396E9B15D32D9FA516E6BE2797B3B770FFDCDF3C2CE471D624338585AA1C523602DFF4AF7517E872AC42F6668CC34EBE0F27BBC2CE8"
 "ASP.NET_SessionId=jovyxi31xu2umjiylo2qjiex"

@@ -68,6 +68,8 @@ namespace ProjectSSC.Controllers
             }
             var model = new DeliveryModel();
             model.Delivery = delivery;
+            model.Suppliers = SupplierContainer.GetSuppliers();
+            model.Markets = MarketContainer.GetMarkets();
             return View(model);
         }
 
