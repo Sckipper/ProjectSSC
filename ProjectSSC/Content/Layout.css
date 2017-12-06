@@ -262,3 +262,6 @@ textarea{
     position: sticky;
 }
 
+#role {
+    display: none;
+}

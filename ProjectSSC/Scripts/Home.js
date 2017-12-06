@@ -25,7 +25,8 @@
             
             var labels = new Array("initiate", "de livrat", "livrate", "refuzate");
             var data = new Array();
-            for (var i = 0; i < numbers.length; i++) {
+
+            for (var i = 0; numbers != null && i < numbers.length; i++) {
                 data.push({
                     'label': labels[i],
                     'value': numbers[i],
@@ -46,7 +47,7 @@
 
             var labels = new Array("categorii principale", "categorii secundare");
             var data = new Array();
-            for (var i= 0; i < numbers.length; i++){
+            for (var i = 0; numbers != null &&  i < numbers.length; i++){
                 data.push({
                     'label': labels[i],
                     'value': numbers[i],
@@ -57,7 +58,7 @@
 
             var labels = new Array("produse ce expiră în 3 zile", "produse ce expiră într-o săptămână", "produse ce expiră într-o lună", "produse expirate");
             var data = new Array();
-            for (var i = 0; i < numbers2.length; i++) {
+            for (var i = 0; numbers2 != null &&  i < numbers2.length; i++) {
                 data.push({
                     'label': labels[i],
                     'value': numbers2[i],
@@ -78,7 +79,7 @@
 
             var labels = new Array("initiate", "de livrat", "livrate", "refuzate");
             var data = new Array();
-            for (var i = 0; i < numbers.length; i++) {
+            for (var i = 0; numbers != null && i < numbers.length; i++) {
                 data.push({
                     'label': labels[i],
                     'value': numbers[i],
@@ -90,7 +91,7 @@
             var labels = new Array("angajaţi", "manageri", "şefi", "furnizori");
             var sgLabels = new Array("angajat", "manager", "şef", "furnizor");
             var data = new Array();
-            for (var i = 0; i < numbers2.length; i++) {
+            for (var i = 0; numbers2 != null && i < numbers2.length; i++) {
                 data.push({
                     'label': parseInt(numbers2[i]) == 1 ? sgLabels[i] : labels[i],
                     'value': numbers2[i],
@@ -113,7 +114,7 @@
                 labels = elements.chart.attr("data-cities").split(",");
             var data = new Array();
 
-            for (var i = 0; i < numbers.length; i++) {
+            for (var i = 0; numbers != null && i < numbers.length; i++) {
                 data.push({
                     'label': labels[i],
                     'value': numbers[i],
@@ -126,7 +127,7 @@
             if (elements.chart2.attr("data-cities"))
                 labels = elements.chart2.attr("data-cities").split(",");
             var data = new Array();
-            for (var i = 0; i < numbers2.length; i++) {
+            for (var i = 0; numbers2 != null && i < numbers2.length; i++) {
                 data.push({
                     'label': labels[i],
                     'value': numbers2[i],

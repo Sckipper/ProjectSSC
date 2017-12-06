@@ -55,7 +55,7 @@ namespace ProjectSSC.Controllers
 
                     FormsAuthentication.SetAuthCookie(SessionAccessor.LoggedUser.Nume, logmodel.RememberMe);
                     ViewBag.IncorrectUser = false;
-                                      
+
                     return RedirectToAction("Home");
                 }
             }
@@ -104,11 +104,12 @@ namespace ProjectSSC.Controllers
                         return RedirectToAction("Login");
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 logmodel.Message = "Nu s-a putut trimite mail-ul";
             }
-            
+
             return View(logmodel);
         }
 
@@ -123,11 +124,11 @@ namespace ProjectSSC.Controllers
             {
                 case 0:  // Funizor
                     var pendingDeliveries = DeliveryContainer.getNrOfPendingDeliveries();
-                    model.dashboardMessage1 = "Aveti de făcut " + pendingDeliveries + (pendingDeliveries>1?" livrari":" livrare");
+                    model.dashboardMessage1 = "Aveti de făcut " + pendingDeliveries + (pendingDeliveries > 1 ? " livrari" : " livrare");
                     var initiatedDeliveries = DeliveryContainer.getNrOfInitiatedDeliveries();
                     var deliveredDeliveries = DeliveryContainer.getNrOfDeliveredDeliveries();
                     var refusedDeliveries = DeliveryContainer.getNrOfRefusedDeliveries();
-                    model.chart = "" + initiatedDeliveries +","+ pendingDeliveries + "," + deliveredDeliveries + "," + refusedDeliveries;
+                    model.chart = "" + initiatedDeliveries + "," + pendingDeliveries + "," + deliveredDeliveries + "," + refusedDeliveries;
                     break;
 
                 case 1:  // Angajat
@@ -143,7 +144,7 @@ namespace ProjectSSC.Controllers
                     var products7 = ProductsContainer.getNrOfProductsExpiredDays(7);
                     var products30 = ProductsContainer.getNrOfProductsExpiredDays(30);
                     var products0 = ProductsContainer.getNrOfProductsExpired();
-                    model.chart2 = "" + products3 + "," + products7 + "," + products30 + "," + products0 ;
+                    model.chart2 = "" + products3 + "," + products7 + "," + products30 + "," + products0;
                     break;
 
                 case 2:  // Manager
@@ -165,18 +166,18 @@ namespace ProjectSSC.Controllers
                 case 3:  // sef
                     var suppliers = SupplierContainer.getNrOfSuppliers();
                     var cities = SupplierContainer.getTopSuppliersCities(5);
-                    if (cities.Count != 0)
+
+                    model.chart = "";
+                    model.cities = "";
+                    foreach (var city in cities)
                     {
-                        model.chart = "";
-                        model.cities = "";
-                        foreach (var city in cities)
-                        {
-                            model.cities += city + ',';
-                            model.chart += SupplierContainer.getNrOfSupplierByCity(city).ToString() + ",";
-                        }
-                        model.cities = model.cities.Substring(0, model.cities.Length - 1);
-                        model.chart = model.chart.Substring(0, model.chart.Length - 1);
+                        model.cities += city + ',';
+                        model.chart += SupplierContainer.getNrOfSupplierByCity(city).ToString() + ",";
                     }
+                    if (model.cities.Length > 1)
+                        model.cities = model.cities.Substring(0, model.cities.Length - 1);
+                    if (model.chart.Length > 1)
+                        model.chart = model.chart.Substring(0, model.chart.Length - 1);
                     model.dashboardMessage1 = "Aveti " + suppliers + (suppliers > 1 ? " furnizori" : " furnizor");
 
                     var markets = MarketContainer.getNrOfMarkets();
