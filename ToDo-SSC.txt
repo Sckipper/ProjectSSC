@@ -1,10 +1,8 @@
 
-- 404
 - validare id update
 - filtru expirate
 - validari inputuri (cnp, salariu, pret)
 - delete angajati pe roluri, parola sef
-- https
 - edit magazin
 - only jpg upload
 - poze pe edit
