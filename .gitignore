@@ -242,7 +242,9 @@ ModelManifest.xml
 .fake/
 **/ProjectSSC/Web.config
 /.vs/ProjectSSC/v15/.suo
-**/DatabaseModel/obj/Debug
-**/ProjectSSC/bin/
-**/DatabaseModel/bin/
-**/ProjectSSC/obj/Debug/
+
+/DatabaseModel/bin/Debug/*
+/DatabaseModel/obj/Debug/*
+/ProjectSSC/bin/*
+/ProjectSSC/obj/Debug/*
+/ProjectSSC/Web.config
