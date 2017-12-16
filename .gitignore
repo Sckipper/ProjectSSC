@@ -240,10 +240,9 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/ProjectSSC/Web.config
+**/ProjectSSC/Web.config
 /.vs/ProjectSSC/v15/.suo
-/DatabaseModel/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/ProjectSSC/bin/ProjectSSC.dll.config
-/ProjectSSC/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/ProjectSSC/obj/Debug/ProjectSSC.csproj.FileListAbsolute.txt
-/ProjectSSC/obj/Debug/ProjectSSC.csprojResolveAssemblyReference.cache
+**/DatabaseModel/obj/Debug
+**/ProjectSSC/bin/
+**/DatabaseModel/bin/
+**/ProjectSSC/obj/Debug/
