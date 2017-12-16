@@ -97,7 +97,7 @@ namespace DatabaseModel
                         db.Categorie.Add(categ);
                     }
 
-                    if (db.Categorie.FirstOrDefault(el => el.ID == category.CategorieID) != null)
+                    if (category.CategorieID == null || db.Categorie.FirstOrDefault(el => el.ID == category.CategorieID) != null)
                     {
                         categ.CategorieID = category.CategorieID;
                         categ.Nume = category.Nume;
