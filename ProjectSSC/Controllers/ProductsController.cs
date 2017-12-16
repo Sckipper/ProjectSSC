@@ -29,13 +29,6 @@ namespace ProjectSSC.Controllers
             }
         }
 
-        [AllowAnonymous]
-        public ActionResult GetProducts()
-        {
-            var products = ProductsContainer.GetProducts();
-            return View(products);
-        }
-
         // GET: Products
         [Authorize]
         public ActionResult Index()

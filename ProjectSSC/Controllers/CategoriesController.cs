@@ -30,13 +30,6 @@ namespace ProjectSSC.Controllers
             }
         }
 
-        [AllowAnonymous]
-        public ActionResult GetCategories()
-        {
-            var categories = CategoryContainer.GetCategories();
-            return View(categories);
-        }
-
         // GET: Categories
         [Authorize]
         public ActionResult Index()
