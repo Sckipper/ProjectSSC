@@ -103,7 +103,8 @@ namespace DatabaseModel
                         categ.Nume = category.Nume;
                         categ.Cod = category.Cod;
                         categ.Descriere = category.Descriere;
-                        categ.Imagine = category.Imagine;
+                        if(!String.IsNullOrEmpty(category.Imagine))
+                            categ.Imagine = category.Imagine;
 
                         db.SaveChanges();
                     }
