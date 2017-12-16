@@ -52,7 +52,7 @@ namespace DatabaseModel
                     Int32.TryParse(ids[1], out id2);
                     Int32.TryParse(ids[2], out id3);
                 }
-            }
+            }else Int32.TryParse(code, out id);
            
             if (id != 0 && id2 <= id3)
                 return new ShopAppEntities().Categorie.Where(el => el.ID == id).Count() > 0;

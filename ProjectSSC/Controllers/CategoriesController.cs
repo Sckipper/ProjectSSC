@@ -54,7 +54,7 @@ namespace ProjectSSC.Controllers
         public ActionResult Create()
         {
             var model = new CategoryModel();
-            model.Categories = CategoryContainer.GetCategories();
+            model.Categories = CategoryContainer.GetSupperiorCategories();
             return View(model);
         }
 
@@ -82,6 +82,7 @@ namespace ProjectSSC.Controllers
             }
             var model = new CategoryModel();
             model.Category = category;
+            model.Categories = CategoryContainer.GetSupperiorCategories();
             return View(model);
         }
 

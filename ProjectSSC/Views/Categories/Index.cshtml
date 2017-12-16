@@ -52,7 +52,7 @@
                                 <td>@item.Cod</td>
                                 <td>@item.Descriere</td>
                                 <td class="image">
-                                    @if(item.Imagine != null)
+                                    @if(!String.IsNullOrEmpty(item.Imagine))
                                     {
                                         <img class="img" src="~/Content/ProductsImages/@(item.Imagine).png" />
                                     }
