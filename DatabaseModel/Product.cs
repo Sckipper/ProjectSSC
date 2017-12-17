@@ -19,6 +19,7 @@ namespace DatabaseModel
         [Required(ErrorMessage = "Denumire invalida")]
         public string Denumire { get; set; }
         public string Greutate { get; set; }
+        [Required(ErrorMessage = "Pret invalid")]
         public Nullable<double> Pret { get; set; }
         [Required(ErrorMessage = "Cantitate invalida")]
         public int Cantitate { get; set; }

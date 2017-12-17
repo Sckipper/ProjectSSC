@@ -101,11 +101,9 @@
 <script>
     $(function () {
         var dateParts = null;
-        $(".datepicker").datepicker();
+        $(".datepicker").datepicker({ dateFormat: 'dd.mm.yy' });
         if ($("#date").val()) {
-            dateParts = $("#date").val().split(".");
-            var dateObject = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
-            $(".datepicker").datepicker("setDate", dateObject);
+            $(".datepicker").datepicker("setDate", $("#date").val());
         }        
     });
 </script>
