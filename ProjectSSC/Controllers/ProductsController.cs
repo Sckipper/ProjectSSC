@@ -71,10 +71,14 @@ namespace ProjectSSC.Controllers
                     postedFile.SaveAs(path);
                     model.Product.Imagine = "img_" + model.Product.Denumire.ToLower();
                 }
-                
-                ProductsContainer.SaveProduct(model.Product);
-                return RedirectToAction("Index");
+                if (model.Product.Pret > 0 && model.Product.Cantitate > 0)
+                {
+                    ProductsContainer.SaveProduct(model.Product);
+                    return RedirectToAction("Index");
+                }
             }
+            model.Categories = CategoryContainer.GetCategories();
+            model.Markets = MarketContainer.GetMarkets();
             return View(model);
         }
 
@@ -82,23 +86,26 @@ namespace ProjectSSC.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(HttpPostedFileBase postedFile, Product product)
+        public ActionResult Edit(HttpPostedFileBase postedFile, ProductModel model)
         {
             if (ModelState.IsValid)
             {
                 if (postedFile != null)
                 {
-                    var filename = "img_" + product.Denumire.ToLower().Replace(' ', '_') + ".png";
+                    var filename = "img_" + model.Product.Denumire.ToLower().Replace(' ', '_') + ".png";
                     var path = Path.Combine(Server.MapPath("~/Content/ProductsImages/"), filename);
                     postedFile.SaveAs(path);
-                    product.Imagine = "img_" + product.Denumire.ToLower().Replace(' ', '_');
+                    model.Product.Imagine = "img_" + model.Product.Denumire.ToLower().Replace(' ', '_');
                 }
-
-                ProductsContainer.SaveProduct(product);
-                return RedirectToAction("Index");
+                if (model.Product.Pret > 0 && model.Product.Cantitate > 0)
+                {
+                    ProductsContainer.SaveProduct(model.Product);
+                    return RedirectToAction("Index");
+                }
             }
-
-            return View(product);
+            model.Categories = CategoryContainer.GetCategories();
+            model.Markets = MarketContainer.GetMarkets();
+            return View(model);
         }
 
 
