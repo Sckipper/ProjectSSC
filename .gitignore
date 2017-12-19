@@ -240,7 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-**/ProjectSSC/Web.config
 /.vs/ProjectSSC/v15/.suo
 
 /DatabaseModel/bin/Debug/*
