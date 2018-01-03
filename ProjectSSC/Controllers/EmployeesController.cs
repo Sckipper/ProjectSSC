@@ -52,8 +52,11 @@ namespace ProjectSSC.Controllers
         {
             if (ModelState.IsValid)
             {
-                EmployeeContainer.SaveEmployee(employee);
-                return RedirectToAction("Index");
+                if((int)Session["role"] >= SessionAccessor.getUserRole(employee.Functie))
+                {
+                    EmployeeContainer.SaveEmployee(employee);
+                    return RedirectToAction("Index");
+                }
             }
             var model = new EmployeeModel();
             model.Employee = employee;
