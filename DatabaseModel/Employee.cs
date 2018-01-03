@@ -25,6 +25,7 @@ namespace DatabaseModel
         [Required(ErrorMessage = "CNP invalid")]
         public long CNP { get; set; }
 
+        [EmailAddress]
         [StringLength(50)]
         [Required(ErrorMessage = "Email invalid")]
         public string Email { get; set; }
@@ -33,7 +34,6 @@ namespace DatabaseModel
         [Required(ErrorMessage = "Parola obligatorie")]
         public string Parola { get; set; }
 
-        [EmailAddress]
         [Required(ErrorMessage = "Data invalida")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime DataAngajare { get; set; }

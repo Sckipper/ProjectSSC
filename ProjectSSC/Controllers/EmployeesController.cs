@@ -76,7 +76,11 @@ namespace ProjectSSC.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(employee);
+            var model = new EmployeeModel();
+            model.Employee = employee;
+            model.Markets = MarketContainer.GetMarkets();
+
+            return View(model);
         }
 
 
