@@ -16,9 +16,12 @@ namespace ProjectSSC
             set { SetSessionValue(Keys.LoggedUser, value); }
         }
 
-        public static int getUserRole()
+        public static int getUserRole(string userRole = null)
         {
-            switch (SessionAccessor.LoggedUser.Functie)
+            if (string.IsNullOrWhiteSpace(userRole))
+                userRole = SessionAccessor.LoggedUser.Functie;
+
+            switch (userRole)
             {
                 case "Furnizor":
                     return 0;
