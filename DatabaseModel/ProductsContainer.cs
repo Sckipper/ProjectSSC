@@ -81,19 +81,22 @@ namespace DatabaseModel
                     prod = new Produs();
                     db.Produs.Add(prod);
                 }
+                if(db.Magazin.FirstOrDefault(el => el.ID == product.MagazinID) != null
+                   && db.Categorie.FirstOrDefault(el => el.ID == product.CategorieID) != null)
+                {
+                    prod.CategorieID = product.CategorieID;
+                    prod.MagazinID = product.MagazinID;
+                    prod.Denumire = product.Denumire;
+                    prod.Greutate = product.Greutate;
+                    prod.Pret = product.Pret;
+                    prod.Cantitate = product.Cantitate;
+                    prod.DataExpirate = product.DataExpirate;
+                    prod.Descriere = product.Descriere;
+                    if (!String.IsNullOrWhiteSpace(product.Imagine))
+                        prod.Imagine = product.Imagine;
 
-                prod.CategorieID = product.CategorieID;
-                prod.MagazinID = product.MagazinID;
-                prod.Denumire = product.Denumire;
-                prod.Greutate = product.Greutate;
-                prod.Pret = product.Pret;
-                prod.Cantitate = product.Cantitate;
-                prod.DataExpirate = product.DataExpirate;
-                prod.Descriere = product.Descriere;
-                if(!String.IsNullOrWhiteSpace(product.Imagine))
-                    prod.Imagine = product.Imagine;
-
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
             }
         }
 
