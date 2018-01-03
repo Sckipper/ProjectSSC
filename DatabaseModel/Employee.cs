@@ -4,10 +4,10 @@ namespace DatabaseModel
 {
     public class Employee
     {
-        [Range(1, int.MaxValue)]
+        [Range(1, int.MaxValue, ErrorMessage = "ID Ivalid")]
         public int ID { get; set; }
 
-        [Range(1, int.MaxValue)]
+        [Range(1, int.MaxValue, ErrorMessage = "Magazin ID invalid")]
         [Required(ErrorMessage = "Magazin invalid")]
         public int MagazinID { get; set; }
 
