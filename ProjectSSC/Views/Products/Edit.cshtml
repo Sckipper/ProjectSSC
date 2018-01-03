@@ -69,7 +69,7 @@
                     <div class="form-group">
                         <strong class="control-label col-md-3 ">Data Expirare:</strong>
                         <div class="col-md-8">
-                            @Html.EditorFor(model => Model.Product.DataExpirate, new { htmlAttributes = new { @class = "datepicker form-control", id = "date", @rows = 8, @readonly = "readonly" } })
+                            @Html.EditorFor(model => Model.Product.DataExpirate, "{0:MM.dd.yyyy}", new { htmlAttributes = new { @class = "datepicker form-control", id = "date", @rows = 8, @readonly = "readonly" } })
                             @Html.ValidationMessageFor(model => Model.Product.DataExpirate, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -101,7 +101,7 @@
 <script>
     $(function () {
         var dateParts = null;
-        $(".datepicker").datepicker({ dateFormat: 'dd.mm.yy' });
+        $(".datepicker").datepicker();
         if ($("#date").val()) {
             $(".datepicker").datepicker("setDate", $("#date").val());
         }        

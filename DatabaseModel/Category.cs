@@ -6,7 +6,6 @@ namespace DatabaseModel
 {
     public class Category
     {
-        [Range(1, int.MaxValue, ErrorMessage = "ID Ivalid")]
         public int ID { get; set; }
 
         [StringLength(50)]
@@ -28,7 +27,6 @@ namespace DatabaseModel
 
         [StringLength(50)]
         public string Imagine { get; set; }
-
 
         public List<int> MarketCoords { get; set; }
     }

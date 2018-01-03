@@ -9,7 +9,6 @@ namespace DatabaseModel
 {
     public class Product
     {
-        [Range(1, int.MaxValue, ErrorMessage = "ID Ivalid")]
         public int ID { get; set; }
 
         [StringLength(50)]
@@ -41,8 +40,8 @@ namespace DatabaseModel
         [Required(ErrorMessage = "Cantitate invalida")]
         public int Cantitate { get; set; }
 
-
         public Nullable<System.DateTime> DataExpirate { get; set; }
+
         [StringLength(1024)]
         public string Descriere { get; set; }
 

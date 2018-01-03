@@ -4,7 +4,6 @@ namespace DatabaseModel
 {
     public class Employee
     {
-        [Range(1, int.MaxValue, ErrorMessage = "ID Ivalid")]
         public int ID { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Magazin ID invalid")]
@@ -35,7 +34,6 @@ namespace DatabaseModel
         public string Parola { get; set; }
 
         [Required(ErrorMessage = "Data invalida")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime DataAngajare { get; set; }
 
         [Range(1, int.MaxValue, ErrorMessage = "Salariu invalid")]

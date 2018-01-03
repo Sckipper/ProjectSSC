@@ -4,7 +4,6 @@ namespace DatabaseModel
 {
     public class Supplier
     {
-        [Range(1, int.MaxValue, ErrorMessage = "ID Ivalid")]
         public int ID { get; set; }
 
         [StringLength(50)]

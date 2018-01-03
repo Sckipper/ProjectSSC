@@ -5,7 +5,6 @@ namespace DatabaseModel
 {
     public class Market
     {
-        [Range(1, int.MaxValue, ErrorMessage = "ID Ivalid")]
         public int ID { get; set; }
 
         [StringLength(128)]
