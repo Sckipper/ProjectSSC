@@ -10,6 +10,16 @@ namespace ProjectSSC.Controllers
     [Authorize]
     public class DeliveriesController : Controller
     {
+        private static string[] ValidStatus = new string[] { "Initiata", "Procesare", "Livrata", "Refuzata" };
+
+        private static bool validateStatus(string status)
+        {
+            if (ValidStatus.Any(status.Contains))
+                return true;
+
+            return false;
+        }
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (SessionAccessor.LoggedUser == null)
@@ -79,13 +89,17 @@ namespace ProjectSSC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Delivery delivery)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && DeliveriesController.validateStatus(delivery.Status))
             {
                 DeliveryContainer.SaveDelivery(delivery);
                 return RedirectToAction("Index");
             }
 
-            return View(delivery);
+            var model = new DeliveryModel();
+            model.Delivery = delivery;
+            model.Suppliers = SupplierContainer.GetSuppliers();
+            model.Markets = MarketContainer.GetMarkets();
+            return View(model);
         }
 
 

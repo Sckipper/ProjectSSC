@@ -9,6 +9,8 @@ namespace DatabaseModel
 {
     public class ProductsContainer
     {
+        private static string[] ImageExtensions = new string[] { ".png", ".jpeg", ".tiff", ".gif", ".bmp", ".img" };
+
         public static object Request { get; private set; }
 
         public static List<Product> GetProducts()
@@ -81,7 +83,7 @@ namespace DatabaseModel
                     prod = new Produs();
                     db.Produs.Add(prod);
                 }
-                if(db.Magazin.FirstOrDefault(el => el.ID == product.MagazinID) != null
+                if (db.Magazin.FirstOrDefault(el => el.ID == product.MagazinID) != null
                    && db.Categorie.FirstOrDefault(el => el.ID == product.CategorieID) != null)
                 {
                     prod.CategorieID = product.CategorieID;
@@ -117,5 +119,12 @@ namespace DatabaseModel
             }
         }
 
+        public static bool validateImage(string img)
+        {
+            if (ImageExtensions.All(img.Substring(img.Length - 5).Contains))
+                return true;
+
+            return false;
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace ProjectSSC.Controllers
         // GET: Suppliers
         public ActionResult Index()
         {
-            var employees = EmployeeContainer.GetEmployees();
+            var employees = EmployeeContainer.GetEmployeesByRole((int)Session["role"]);
             var markets = MarketContainer.GetMarkets();
             foreach (var emp in employees)
                 emp.MarketName = markets.FirstOrDefault(x => x.ID == emp.MagazinID).Denumire;

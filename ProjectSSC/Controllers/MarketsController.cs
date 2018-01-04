@@ -46,7 +46,7 @@ namespace ProjectSSC.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (postedFile != null)
+                if (postedFile != null && ProductsContainer.validateImage(market.Denumire.ToLower()))
                 {
                     var filename = "img_" + market.Denumire.ToLower() + ".png";
                     var path = Path.Combine(Server.MapPath("~/Content/ProductsImages/"), filename);

@@ -85,8 +85,11 @@
                             <select id="Functie" class="form-control text-box single-line selectpicker" name="@Html.NameFor(model => model.Employee.Functie)">
                                 <option value="Angajat">Angajat</option>
                                 <option value="Manager magazin">Manager magazin</option>
-                                <option value="Sef magazin">Sef magazin</option>
-                                <option value="Furnizor">Furnizor</option>
+                                @if ((int)Session["role"] < 3)
+                                {
+                                    <option value="Sef magazin">Sef magazin</option>
+                                    <option value="Furnizor">Furnizor</option>
+                                }
                             </select>
                             @Html.ValidationMessageFor(model => Model.Employee.Functie, "", new { @class = "text-danger" })
                         </div>

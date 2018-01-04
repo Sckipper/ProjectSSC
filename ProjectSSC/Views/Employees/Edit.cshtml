@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <strong class="control-label col-md-3 ">Parola:</strong>
                         <div class="col-md-8">
-                            @Html.EditorFor(model => Model.Employee.Parola, new { htmlAttributes = new { @class = "form-control", @rows = 8 } })
+                            @Html.PasswordFor(model => Model.Employee.Parola, new { htmlAttributes = new { @class = "password form-control", @rows = 8 } })
                             @Html.ValidationMessageFor(model => Model.Employee.Parola, "", new { @class = "text-danger" })
                         </div>
                     </div>

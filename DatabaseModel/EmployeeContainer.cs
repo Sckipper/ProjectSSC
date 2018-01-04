@@ -8,8 +8,21 @@ namespace DatabaseModel
 {
     public class EmployeeContainer
     {
-        public static List<Employee> GetEmployees()
+        public static List<Employee> GetEmployeesByRole(int role)
         {
+            var functie = "";
+            switch (role)
+            {
+                case 2:
+                    functie = "Manager magazin, Angajat";
+                    break;
+                case 3:
+                    functie = "Sef magazin, Furnizor";
+                    break;
+                case 10:
+                    functie = "Manager magazin, Angajat, Sef magazin, Furnizor, Admin";
+                    break;
+            }
             return new ShopAppEntities().Angajat.Select(el => new Employee()
             {
                 ID = el.ID,
@@ -22,8 +35,7 @@ namespace DatabaseModel
                 DataAngajare = el.DataAngajare,
                 Salariu = el.Salariu,
                 Functie = el.Functie
-                
-            }).ToList();
+            }).Where(el => functie.Contains(el.Functie)).ToList();
         }
 
         public static string getPasswordByEmail(string email)
