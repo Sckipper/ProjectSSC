@@ -36,7 +36,7 @@ namespace ProjectSSC.Controllers
         {
             var categories = CategoryContainer.GetCategories();
             foreach(var categ in categories)
-                if(categ.CategorieID != null)
+                if(categ.CategorieID != null && categories.FirstOrDefault(x => x.ID == categ.CategorieID) != null)
                     categ.CategoryName = categories.FirstOrDefault(x => x.ID == categ.CategorieID).Nume;
 
             return View(categories);
@@ -87,7 +87,7 @@ namespace ProjectSSC.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (postedFile != null && ProductsContainer.validateImage(categoryModel.Category.Nume.ToLower()))
+                if (postedFile != null && ProductsContainer.validateImage(postedFile.FileName))
                 {
                     var filename = "img_" + categoryModel.Category.Nume.ToLower() + ".png";
                     var path = Path.Combine(Server.MapPath("~/Content/ProductsImages/"), filename);

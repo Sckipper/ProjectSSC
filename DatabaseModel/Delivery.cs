@@ -30,7 +30,7 @@ namespace DatabaseModel
         public string Descriere { get; set; }
 
         [Required(ErrorMessage = "Pret invalid")]
-        [Range(1, int.MaxValue, ErrorMessage = "ID Categorie Ivalid")]
+        [Range(1, int.MaxValue, ErrorMessage = "Pret Invalid")]
         public int Pret { get; set; }
     }
 }

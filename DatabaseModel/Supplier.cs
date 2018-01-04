@@ -20,7 +20,6 @@ namespace DatabaseModel
 
         [Range(0, long.MaxValue, ErrorMessage = "Telefon invalid")]
         [Required(ErrorMessage = "Telefon invalid")]
-        [Phone]
         public long Telefon { get; set; }
     }
 }

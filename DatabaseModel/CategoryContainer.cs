@@ -129,6 +129,11 @@ namespace DatabaseModel
                         File.Delete(fullPath);
 
                     db.Categorie.Remove(categ);
+
+                    List<Categorie> rest = db.Categorie.Where(el => el.CategorieID == id).ToList();
+                    foreach(var rez in rest)
+                        db.Categorie.Remove(rez);
+
                     db.SaveChanges();
                 }
             }

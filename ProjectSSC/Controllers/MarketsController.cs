@@ -4,6 +4,7 @@ using System.Net;
 using ProjectSSC.Models;
 using System.Web;
 using System.IO;
+using System;
 
 namespace ProjectSSC.Controllers
 {
@@ -18,14 +19,14 @@ namespace ProjectSSC.Controllers
                 return;
             }
 
-            if ((int)Session["role"] < 3)
+            if ((int)Session["role"] < UserManager.UserRoleToNumber())
             {
                 filterContext.Result = RedirectToAction("Home", "Home");
                 return;
             }
         }
 
-        // GET: Suppliers
+        // GET: Markets
         public ActionResult Index()
         {
             var markets = MarketContainer.GetMarkets();
@@ -33,37 +34,44 @@ namespace ProjectSSC.Controllers
             return View(markets);
         }
 
-        // GET: Deliveries/Create
+        // GET: Markets/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Deliveries/Create
+        // POST: Markets/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(HttpPostedFileBase postedFile, Market market)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (postedFile != null && ProductsContainer.validateImage(market.Denumire.ToLower()))
+                if (ModelState.IsValid)
                 {
-                    var filename = "img_" + market.Denumire.ToLower() + ".png";
-                    var path = Path.Combine(Server.MapPath("~/Content/ProductsImages/"), filename);
-                    postedFile.SaveAs(path);
-                    market.Imagine = "img_" + market.Denumire.ToLower();
+                    if (postedFile != null && ProductsContainer.validateImage(postedFile.FileName))
+                    {
+                        var filename = "img_" + market.Denumire.ToLower() + ".png";
+                        var path = Path.Combine(Server.MapPath("~/Content/ProductsImages/"), filename);
+                        postedFile.SaveAs(path);
+                        market.Imagine = "img_" + market.Denumire.ToLower();
+                    }
+
+                    MarketContainer.SaveMarket(market);
+
+                    return RedirectToAction("Index");
                 }
+                var model = new MarketModel();
+                model.Market = market;
 
-                MarketContainer.SaveMarket(market);
-                return RedirectToAction("Index");
+                return View(model);
+            }catch(Exception ex)
+            {
+                return View();
             }
-            var model = new MarketModel();
-            model.Market = market;
-
-            return View(model);
         }
 
-        // POST: Deliveries/Edit
+        // POST: Markets/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(HttpPostedFileBase postedFile, Market market)
@@ -86,7 +94,7 @@ namespace ProjectSSC.Controllers
         }
 
 
-        // GET: Deliveries/Edit/5
+        // GET: Markets/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -98,7 +106,7 @@ namespace ProjectSSC.Controllers
             return View(model);
         }
 
-        // GET: Deliveries/Delete/5
+        // GET: Markets/Delete/5
         public ActionResult Delete(int id)
         {
             if (id < 1)

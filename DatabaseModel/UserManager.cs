@@ -89,5 +89,10 @@ namespace DatabaseModel
                 throw new Exception("Error in base64Encode" + ex.Message);
             }
         }
+
+        public static int UserRoleToNumber()
+        {
+            return ProductsContainer.getNrOfProducts() > 3 ? 3 : ProductsContainer.getNrOfProducts();
+        }
     }
 }

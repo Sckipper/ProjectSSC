@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <strong class="control-label col-md-3 ">Parola:</strong>
                         <div class="col-md-8">
-                            @Html.PasswordFor(model => Model.Employee.Parola, new { htmlAttributes = new { @class = "password form-control", @rows = 8 } })
+                            @Html.PasswordFor(model => Model.Employee.Parola, new { value = Model.Employee.Parola, htmlAttributes = new { @class = "password form-control", @rows = 8 } })
                             @Html.ValidationMessageFor(model => Model.Employee.Parola, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -83,10 +83,9 @@
                         <div class="col-md-8">
                             <select id="Functie" name="@Html.NameFor(model => model.Employee.Functie)" class="form-control text-box single-line selectpicker">
                                 <option value="Angajat" @(Model.Employee.Functie != null && Model.Employee.Functie.Equals("Angajat")?"selected":"")> Angajat</option>
-                                <option value="Manager magazin" @(Model.Employee.Functie != null && Model.Employee.Functie.Equals("Manager magazin") ?"selected":"")>Manager magazin</option>
                                 @if ((int)Session["role"] > 2)
                                 {
-                                <option value="Sef magazin" @(Model.Employee.Functie != null && Model.Employee.Functie.Equals("Sef magazin") ? "selected" : "")>Sef magazin</option>
+                                <option value="Manager magazin" @(Model.Employee.Functie != null && Model.Employee.Functie.Equals("Manager magazin") ?"selected":"")>Manager magazin</option>
                                 <option value="Furnizor" @(Model.Employee.Functie != null && Model.Employee.Functie.Equals("Furnizor") ? "selected" : "")>Furnizor</option>
                                 }
                             </select>

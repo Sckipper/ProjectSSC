@@ -25,7 +25,7 @@ namespace ProjectSSC.Controllers
             }
         }
 
-        // GET: Suppliers
+        // GET: Employees
         public ActionResult Index()
         {
             var employees = EmployeeContainer.GetEmployeesByRole((int)Session["role"]);
@@ -36,7 +36,7 @@ namespace ProjectSSC.Controllers
             return View(employees);
         }
 
-        // GET: Deliveries/Create
+        // GET: Employees/Create
         public ActionResult Create()
         {
             var model = new EmployeeModel();
@@ -45,14 +45,14 @@ namespace ProjectSSC.Controllers
             return View(model);
         }
 
-        // POST: Deliveries/Create
+        // POST: Employees/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Employee employee)
         {
             if (ModelState.IsValid)
             {
-                if((int)Session["role"] >= SessionAccessor.getUserRole(employee.Functie))
+                if((int)Session["role"] > SessionAccessor.getUserRole(employee.Functie))
                 {
                     EmployeeContainer.SaveEmployee(employee);
                     return RedirectToAction("Index");
@@ -65,15 +65,18 @@ namespace ProjectSSC.Controllers
             return View(model);
         }
 
-        // POST: Deliveries/Edit
+        // POST: Employees/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Employee employee)
         {
             if (ModelState.IsValid)
             {
-                EmployeeContainer.SaveEmployee(employee);
-                return RedirectToAction("Index");
+                if((int)Session["role"] >= SessionAccessor.getUserRole(employee.Functie))
+                {
+                    EmployeeContainer.SaveEmployee(employee);
+                    return RedirectToAction("Index");
+                }
             }
 
             var model = new EmployeeModel();
@@ -84,7 +87,7 @@ namespace ProjectSSC.Controllers
         }
 
 
-        // GET: Deliveries/Edit/5
+        // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,7 +100,7 @@ namespace ProjectSSC.Controllers
             return View(model);
         }
 
-        // GET: Deliveries/Delete/5
+        // GET: Employees/Delete/5
         public ActionResult Delete(int id)
         {
             if (id < 1)

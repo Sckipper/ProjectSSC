@@ -17,7 +17,7 @@ namespace DatabaseModel
                     functie = "Manager magazin, Angajat";
                     break;
                 case 3:
-                    functie = "Sef magazin, Furnizor";
+                    functie = "Sef magazin, Furnizor, Manager magazin, Angajat";
                     break;
                 case 10:
                     functie = "Manager magazin, Angajat, Sef magazin, Furnizor, Admin";

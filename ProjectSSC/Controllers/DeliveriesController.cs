@@ -12,8 +12,11 @@ namespace ProjectSSC.Controllers
     {
         private static string[] ValidStatus = new string[] { "Initiata", "Procesare", "Livrata", "Refuzata" };
 
-        private static bool validateStatus(string status)
+        private static bool validateStatus(int role, string status)
         {
+            if (role != 3 && status.Equals("Refuzata"))
+                return false;
+
             if (ValidStatus.Any(status.Contains))
                 return true;
 
@@ -43,7 +46,7 @@ namespace ProjectSSC.Controllers
             var suppliers = SupplierContainer.GetSuppliers();
             var delivery = DeliveryContainer.GetDeliveries();
 
-            foreach(var del in delivery)
+            foreach (var del in delivery)
             {
                 del.SupplierName = suppliers.FirstOrDefault(x => x.ID == del.FurnizorID).Nume;
                 del.MarketName = markets.FirstOrDefault(x => x.ID == del.MagazinID).Denumire;
@@ -71,7 +74,7 @@ namespace ProjectSSC.Controllers
         {
             if (ModelState.IsValid)
             {
-                delivery.Status = "Initiata";
+                delivery.Status = delivery.Status != null ? delivery.Status : "Initiata";
                 delivery.DataSolicitare = DateTime.Now;
                 DeliveryContainer.SaveDelivery(delivery);
                 return RedirectToAction("Index");
@@ -89,7 +92,7 @@ namespace ProjectSSC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Delivery delivery)
         {
-            if (ModelState.IsValid && DeliveriesController.validateStatus(delivery.Status))
+            if (ModelState.IsValid && DeliveriesController.validateStatus((int)Session["role"], delivery.Status))
             {
                 DeliveryContainer.SaveDelivery(delivery);
                 return RedirectToAction("Index");
@@ -112,6 +115,8 @@ namespace ProjectSSC.Controllers
 
             var model = new DeliveryModel();
             model.Delivery = DeliveryContainer.getDeliveryById((int)id);
+            if ((int)Session["role"] != 3)
+                model.Statuses.Remove("Refuzata");
             model.Markets = MarketContainer.GetMarkets();
             model.Suppliers = SupplierContainer.GetSuppliers();
 
@@ -124,7 +129,8 @@ namespace ProjectSSC.Controllers
         {
             if (id < 1)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            DeliveryContainer.DeleteDelivery(id);
+            if((int)Session["role"] > 0)
+                DeliveryContainer.DeleteDelivery(id);
 
             return RedirectToAction("Index");
         }

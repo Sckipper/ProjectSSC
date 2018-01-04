@@ -9,7 +9,7 @@ namespace DatabaseModel
 {
     public class ProductsContainer
     {
-        private static string[] ImageExtensions = new string[] { ".png", ".jpeg", ".tiff", ".gif", ".bmp", ".img" };
+        private static string[] ImageExtensions = new string[] { ".png", ".jpeg", ".tiff", ".gif", ".bmp", ".img", ".jpg" };
 
         public static object Request { get; private set; }
 
@@ -121,7 +121,7 @@ namespace DatabaseModel
 
         public static bool validateImage(string img)
         {
-            if (ImageExtensions.All(img.Substring(img.Length - 5).Contains))
+            if (ImageExtensions.Any(s => img.Substring(img.Length - 5).Contains(s)))
                 return true;
 
             return false;
