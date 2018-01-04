@@ -15,7 +15,6 @@ namespace DatabaseModel
         public string Denumire { get; set; }
 
         [StringLength(50)]
-        [Required(ErrorMessage = "Imaginea magazinului este obligatorie")]
         public string Imagine { get; set; }
 
         [StringLength(50)]

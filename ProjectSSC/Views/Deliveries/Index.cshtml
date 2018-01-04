@@ -52,7 +52,7 @@
                                 <td>@item.SupplierName</td>
                                 <td>@item.MarketName</td>
                                 <td>@(item.DataSolicitare != null ? item.DataSolicitare.ToShortDateString() : "")</td>
-                                <td>@item.DataLivrare</td>
+                                <td>@(item.DataLivrare != null ? item.DataLivrare.ToShortDateString() : "")</td>
                                 <td class="status">@item.Status</td>
                                 <td>@item.Descriere</td>
                                 <td>@item.Pret</td>

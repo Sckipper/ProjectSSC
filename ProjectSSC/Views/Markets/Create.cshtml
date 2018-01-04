@@ -44,8 +44,10 @@
                         <strong class="control-label col-md-3 ">Imagine:</strong>
                         <div class="col-md-8">
                             <input type="file" name="postedFile" />
+                            @Html.ValidationMessageFor(model => Model.Market.Imagine, "", new { @class = "text-danger" })
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="form-group">
