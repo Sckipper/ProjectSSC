@@ -18,9 +18,10 @@ namespace DatabaseModel
         public string Nume { get; set; }
 
         [StringLength(50)]
+        [Required(ErrorMessage = "Prenume obligatoriu")]
         public string Prenume { get; set; }
 
-        [Range(1000000000000, 7000000000000, ErrorMessage = "CNP invalid")]
+        [Range(1000000000000, 3000000000000, ErrorMessage = "CNP invalid")]
         [Required(ErrorMessage = "CNP invalid")]
         public long CNP { get; set; }
 
